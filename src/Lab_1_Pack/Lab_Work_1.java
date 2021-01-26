@@ -67,59 +67,68 @@ public class Lab_Work_1 {
                     }
                 }
             }
-            if(Arrays.equals(arr_1,arr_2)) // если после сортировки массивы одинаковые
-            {
-                System.out.println("It's equal arrays");
+            //ЗАМЕНА МЕТОДА ARRAYS.EQUALS
+            for(int i =0;i<arr_1.length;i++){
+                if(arr_1[i]==arr_2[i]) // если после сортировки массивы одинаковые
+                {
+                    System.out.println("It's equal arrays");
+                }
+                else // в противном случае
+                {
+                    System.out.println("It's not equal arrays");
+                }
             }
-            else // в противном случае
-            {
-                System.out.println("It's not equal arrays");
-            }
-
         }
+    }
 
 
+
+    //метод поиска палиндрома
+    public static StringBuilder palimCheck(int st,int end,String strF)
+    {
+        StringBuilder strB = new StringBuilder();
+        //цикл проверки на зеркальность части строки
+        while (st >= 0 && end < strF.length()) {
+            if (strF.charAt(st) == strF.charAt(end)) {
+                st--;
+                end++;
+            } else
+            {
+                break;
+            }
+        }
+        //после последнего цикла, если растояние между 2 переменными больше 3
+        // вставляем строку в билдер
+        if (end - st >= 3) {
+            strB.append(strF.substring(st+1,end));
+        }
+        return strB;
     }
 
     //Найти в составе строки палиндром
-    public String fourth_task(String srF) {
+    public String fourth_task(String strF) {
 
-        StringBuilder stB = new StringBuilder();
+
         String strS = "";
-        for (int i = 0; i < srF.length() - 1; i++) {
+        for (int i = 0; i < strF.length() - 1; i++) {
 
             int st = i - 1, end = i + 1;
             //цикл если проверка на одинаковых символа подряд
-            while (srF.charAt(i) == srF.charAt(end)&&end < srF.length()) {
+            while (strF.charAt(i) == strF.charAt(end)&&end < strF.length()) {
                 end++;// если предыдущий символ такой же
             }
             i = end - 1; //присваивание новго значения
 
-            //цикл проверки на зеркальность части строки
-            while (st >= 0 && end < srF.length()) {
-                if (srF.charAt(st) == srF.charAt(end)) {
-                    st--;
-                    end++;
-                } else
-                    {
-                    break;
-                }
-            }
-            //после последнего цикла, если растояние между 2 переменными больше 3
-            // вставляем строку в билдер
-            if (end - st >= 3) {
-                stB.append(srF.substring(st+1,end));
-            }
+            //вызов метода поиска палиндрома
+            StringBuilder stbNew = Lab_Work_1.palimCheck(st,end,strF);
+
             // проверка на равенство и запись в строку из билдера
-            if(strS.length()< stB.length()&&stB.toString().equals(stB.reverse().toString()))
+            if(strS.length()< stbNew.length()&&stbNew.toString().equals(stbNew.reverse().toString()))
             {
-                strS = stB.toString();
+                strS = stbNew.toString();
             }
-
         }
-
         return strS;
-
     }
 
     //конвертирует из 10 в 2 сист исчисл
@@ -140,7 +149,6 @@ public class Lab_Work_1 {
         }
 
 
-
     public static void main(String[] args) {
         Lab_Work_1 t = new Lab_Work_1();
         int []arr_1 = {5,6,7,9,10,11};
@@ -151,11 +159,11 @@ public class Lab_Work_1 {
 
         // System.out.println(t.first_task(arr_1,arr_2));
         //System.out.println(t.second_task(arr_2,2));
-         t.third_task(arr_3,arr_4);
-        //System.out.println(t.fourth_task(st));
+        //t.third_task(arr_3,arr_4);
+        System.out.println(t.fourth_task(st));
         //System.out.println(t.fifth_task(2));
 
-        System.out.println(Arrays.equals(arr_3,arr_4));
+        //System.out.println(Arrays.equals(arr_3,arr_4));
 
 
 

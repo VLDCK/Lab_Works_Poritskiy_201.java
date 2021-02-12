@@ -1,9 +1,7 @@
 package Lab_3_Pack;
 
-
-import java.util.Arrays;
-import java.util.TreeSet;
-import java.util.Set;
+import java.util.Scanner;
+import java.util.Vector;
 
 public class MainClass {
 
@@ -19,19 +17,39 @@ public class MainClass {
     Звіт можливо сортувати або по авто, або по власникам.
 
     */
+
     public static void main(String[] args) {
 
+        Scanner in = new Scanner(System.in);
+        Journal journal = new Journal();
 
-       Set carArr = new TreeSet();
+        Vector<PrivateAuto> car = new Vector<>(10);
+        car.add(new PrivateAuto("Tesla Model X","Vitaliy" ,1,12));
+        car.add(new PrivateAuto("Audi A7","Ivan" ,2,4));
+        car.add(new PrivateAuto("BMW X5","Artem" ,3,19));
 
-       carArr.add(new PrivateAuto("Tesla Model X","I'm",1));
-       carArr.add(new PrivateAuto("Audi","Vitaliy",2));
-       carArr.add(new PrivateAuto("BMW","Ivan",3));
+        Vector<AutoOwner> autoOwnerVector = new Vector<>(10);
+        autoOwnerVector.add(new AutoOwner("Vitaliy Led",1,car.elementAt(1)));
+
+        int numOfTask;
+
+        System.out.println( "1 - Подсчет и выдача счета владельцу\t\t 3 - Создание отчета (сортировка по машине или по владельцу)\n"  +
+                            "2 - Получение списка всех машин на стоянке\t 4 - Отчет по конкретной машине или владельцу\n" +
+                            "5 - Журнал вьездов-выездов за период времени 6 - Выход из программы");
+
+        System.out.println("Введите номер выбранной функции");
+        numOfTask=in.nextInt();
 
 
-       for (Object i:carArr) {
-            System.out.println(i);
-       }
+        switch (numOfTask)
+        {
+            case 1: {
+                System.out.println( journal.countingForOwner(car.elementAt(0),
+                                    autoOwnerVector.elementAt(0)));
+            }
+        }
+
+
         
 
     }

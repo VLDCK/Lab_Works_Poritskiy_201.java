@@ -11,14 +11,14 @@ public abstract class Car implements Comparable<Car>{
     private String ownerOfCar;
     private int keyNumber;
 
-    public Car(String modelOfCar,String ownerOfCar,int keyNumber)
+    public Car(int keyNumber,String modelOfCar,String ownerOfCar)
     {
         this.modelOfCar = modelOfCar;
         this.ownerOfCar = modelOfCar;
         this.keyNumber = keyNumber;
     }
 
-    public void setModelOfCar(String modelOfCar) {
+   /* public void setModelOfCar(String modelOfCar) {
         this.modelOfCar = modelOfCar;
     }
     public void setOwnerOfCar(String ownerOfCar) {
@@ -26,7 +26,7 @@ public abstract class Car implements Comparable<Car>{
     }
     public void setKeyNumber(int keyNumber) {
         this.keyNumber = keyNumber;
-    }
+    }*/
 
     public String getModelOfCar() {
         return modelOfCar;
@@ -55,7 +55,16 @@ public abstract class Car implements Comparable<Car>{
 class PrivateAuto extends Car
 {
 
-    public PrivateAuto(String modelOfCar, String ownerOfCar, int keyNumber) {
-        super(modelOfCar, ownerOfCar, keyNumber);
+    int parkingDays;
+
+    public int getParkingDays() {
+        return parkingDays;
     }
+
+    public PrivateAuto(String modelOfCar, String ownerOfCar, int keyNumber, int parkingDays) {
+        super(keyNumber,modelOfCar, ownerOfCar);
+        this.parkingDays = parkingDays;
+    }
+
+
 }

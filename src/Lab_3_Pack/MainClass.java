@@ -21,15 +21,25 @@ public class MainClass {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        Journal journal = new Journal();
 
-        Vector<PrivateAuto> car = new Vector<>(10);
-        car.add(new PrivateAuto("Tesla Model X","Vitaliy" ,1,12));
-        car.add(new PrivateAuto("Audi A7","Ivan" ,2,4));
-        car.add(new PrivateAuto("BMW X5","Artem" ,3,19));
+        Vector<Journal> journalVector = new Vector<>(10);
+        Vector<PrivateAuto> autoVector = new Vector<>(10);
+        Vector<AutoOwner> ownerVector = new Vector<>(10);
 
-        Vector<AutoOwner> autoOwnerVector = new Vector<>(10);
-        autoOwnerVector.add(new AutoOwner("Vitaliy Led",1,car.elementAt(1)));
+        autoVector.add(new PrivateAuto(1,"Tesla",14));
+        autoVector.add(new PrivateAuto(2,"BMW",34));
+        autoVector.add(new PrivateAuto(3,"Audi",5));
+        autoVector.add(new PrivateAuto(4,"Porsche",16));
+
+        ownerVector.add(new AutoOwner("Vitaliy Led",2));
+        ownerVector.add(new AutoOwner("Sergey Us",1));
+        ownerVector.add(new AutoOwner("Vitaliy Nalivkin",1));
+
+        journalVector.add(new Journal(ownerVector.elementAt(0),autoVector.elementAt(0)));
+        journalVector.add(new Journal(ownerVector.elementAt(0),autoVector.elementAt(1)));
+        journalVector.add(new Journal(ownerVector.elementAt(1),autoVector.elementAt(2)));
+        journalVector.add(new Journal(ownerVector.elementAt(2),autoVector.elementAt(3)));
+
 
         int numOfTask;
 
@@ -44,8 +54,31 @@ public class MainClass {
         switch (numOfTask)
         {
             case 1: {
-                System.out.println( journal.countingForOwner(car.elementAt(0),
-                                    autoOwnerVector.elementAt(0)));
+                System.out.println("Enter ID");
+                int carIDl=in.nextInt()-1;
+
+                try {
+                    if(journalVector.elementAt(carIDl).personName==journalVector.elementAt(carIDl+1).personName)
+                        System.out.println(journalVector.elementAt(carIDl).countingForOwner(journalVector.elementAt(carIDl),journalVector.elementAt(carIDl+1)));
+                    else
+                        System.out.println(journalVector.elementAt(carIDl).countingForOwner(journalVector.elementAt(carIDl),journalVector.elementAt(carIDl-1)));
+                }
+                catch (Exception e)
+                {
+                    System.out.println(journalVector.elementAt(carIDl).countingForOwner(journalVector.elementAt(carIDl)));
+                }
+
+                break;
+            }
+            case 2: {
+                Journal.carList(journalVector);
+                break;
+            }
+            case 3: {
+                System.out.println("Sort by cars or owners?\n 1 - Cars \t 2 - Owners");
+                numOfTask=in.nextInt();
+               Journal.SortByAutoOrOwner(numOfTask,journalVector);
+
             }
         }
 

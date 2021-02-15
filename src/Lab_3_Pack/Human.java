@@ -28,14 +28,8 @@ class AutoOwner extends Human{
 
     int IDAuto[]=new int[5];
 
-    AutoOwner(String name_Surname, int carQuantity, PrivateAuto privateAuto) {
+    AutoOwner(String name_Surname, int carQuantity) {
         super(name_Surname, carQuantity);
-        for(int i =0;i<carQuantity;i++){
-            this.IDAuto[i] = privateAuto.getKeyNumber();
         }
     }
 
-
-
-
-}

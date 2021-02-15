@@ -4,7 +4,7 @@ package Lab_3_Pack;
 
 // Абстрактный класс, который будет унаследован классом частного автомобиля
     //Описывает ключевые поля необходимые машине (модель, владельца, ID ключ)
-public abstract class Car implements Comparable<Car>{
+public abstract class Car {
 
 
     private String modelOfCar;
@@ -23,7 +23,7 @@ public abstract class Car implements Comparable<Car>{
         this.keyNumber = keyNumber;
     }
 
-   /* public void setModelOfCar(String modelOfCar) {
+    public void setModelOfCar(String modelOfCar) {
         this.modelOfCar = modelOfCar;
     }
     public void setOwnerOfCar(String ownerOfCar) {
@@ -31,7 +31,7 @@ public abstract class Car implements Comparable<Car>{
     }
     public void setKeyNumber(int keyNumber) {
         this.keyNumber = keyNumber;
-    }*/
+    }
 
     public String getModelOfCar() {
         return modelOfCar;
@@ -43,10 +43,6 @@ public abstract class Car implements Comparable<Car>{
         return keyNumber;
     }
 
-    @Override
-    public int compareTo(Car car) {
-        return this.modelOfCar.compareTo(car.getModelOfCar());
-    }
 
     @Override
     public String toString() {

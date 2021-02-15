@@ -16,10 +16,9 @@ public class Parking implements TimeOnTheParking{
         return this.dataCount = lastDay-firstDay;
     }
 
-    @Override
-    public int paymentForParking(int dataCount)
+    public static int paymentForParking(int dataCount)
     {
-        return paymentSum = payForDay * dataCount;
+        return payForDay * dataCount;
     }
 
 

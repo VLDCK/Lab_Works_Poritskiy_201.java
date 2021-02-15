@@ -45,9 +45,11 @@ public class MainClass {
 
         System.out.println( "1 - Подсчет и выдача счета владельцу\t\t 3 - Создание отчета (сортировка по машине или по владельцу)\n"  +
                             "2 - Получение списка всех машин на стоянке\t 4 - Отчет по конкретной машине или владельцу\n" +
-                            "5 - Журнал вьездов-выездов за период времени 6 - Выход из программы");
+                            "5 - Журнал вьездов-выездов за период времени 6 - Выход из программы\n");
 
-        System.out.println("Введите номер выбранной функции");
+        System.out.println("Quantity of cars: " + journalVector.size());
+
+        System.out.println("\nEnter the number of the function");
         numOfTask=in.nextInt();
 
 
@@ -77,8 +79,13 @@ public class MainClass {
             case 3: {
                 System.out.println("Sort by cars or owners?\n 1 - Cars \t 2 - Owners");
                 numOfTask=in.nextInt();
-               Journal.SortByAutoOrOwner(numOfTask,journalVector);
+                Journal.sortByAutoOrOwner(numOfTask,journalVector);
 
+            }
+            case 4 :{
+                System.out.println("Report by cars or owners?\n 1 - Cars \t 2 - Owners");
+                numOfTask=in.nextInt();
+                Journal.reportByAutoOrOwner(numOfTask,journalVector);
             }
         }
 

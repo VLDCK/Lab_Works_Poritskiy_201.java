@@ -4,10 +4,17 @@ public class Human {
 
     private String name_Surname;
     public int carQuantity;
+    public int age;
 
     Human(String name_Surname, int carQuantity){
         this.name_Surname = name_Surname;
         this.carQuantity = carQuantity;
+    }
+
+    Human(String name_Surname, int carQuantity,int age){
+        this.name_Surname = name_Surname;
+        this.carQuantity = carQuantity;
+        this.age=age;
     }
 
     public String getName_Surname() {
@@ -26,10 +33,10 @@ public class Human {
 
 class AutoOwner extends Human{
 
-    int IDAuto[]=new int[5];
-
     AutoOwner(String name_Surname, int carQuantity) {
         super(name_Surname, carQuantity);
-        }
+    }
+
+
     }
 

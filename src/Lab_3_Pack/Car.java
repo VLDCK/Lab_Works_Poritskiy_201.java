@@ -1,26 +1,22 @@
 package Lab_3_Pack;
 
-
-
-// Абстрактный класс, который будет унаследован классом частного автомобиля
-    //Описывает ключевые поля необходимые машине (модель, владельца, ID ключ)
 public abstract class Car {
 
 
     private String modelOfCar;
     private String ownerOfCar;
-    private int keyNumber;
+    private int number;
 
     public Car(int keyNumber, String modelOfCar)
     {
         this.modelOfCar = modelOfCar;
-        this.keyNumber = keyNumber;
+        this.number = keyNumber;
     };
     public Car(int keyNumber,String modelOfCar,String ownerOfCar)
     {
         this.modelOfCar = modelOfCar;
         this.ownerOfCar = ownerOfCar;
-        this.keyNumber = keyNumber;
+        this.number = keyNumber;
     }
 
     public void setModelOfCar(String modelOfCar) {
@@ -30,7 +26,7 @@ public abstract class Car {
         this.ownerOfCar = ownerOfCar;
     }
     public void setKeyNumber(int keyNumber) {
-        this.keyNumber = keyNumber;
+        this.number = keyNumber;
     }
 
     public String getModelOfCar() {
@@ -40,7 +36,7 @@ public abstract class Car {
         return ownerOfCar;
     }
     public int getKeyNumber() {
-        return keyNumber;
+        return number;
     }
 
 

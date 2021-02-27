@@ -2,21 +2,25 @@ package Lab_3_Pack;
 
 public class Parking implements TimeOnTheParking{
 
-    private int dataCount;
-    private int paymentSum;
+    int quantityOfEE;
+    Record journal;
 
 
-    public int getPaymentSum() {
-        return paymentSum;
+    public void setQuantityOfEE(int quantityOfEE) {
+        this.quantityOfEE = quantityOfEE;
     }
+    public int getQuantityOfEE() {
+        return quantityOfEE;
+    }
+
 
     @Override
-    public int quantityOfDays(int firstDay,int lastDay)
+    public String inOutCar(int days)
     {
-        return this.dataCount = lastDay-firstDay;
+        return journal.toString()+"For " +days+" day(s) the car was leaving the parking lot "+ this.quantityOfEE+" times";
     }
 
-    public static int paymentForParking(int dataCount)
+    public int paymentForParking(int dataCount)
     {
         return payForDay * dataCount;
     }

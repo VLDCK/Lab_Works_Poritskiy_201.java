@@ -2,50 +2,32 @@ package Lab_3_Pack;
 
 public abstract class Car {
 
-
     private String modelOfCar;
-    private String ownerOfCar;
     private int number;
 
-    public Car(int keyNumber, String modelOfCar)
+    public Car(int number, String modelOfCar)
     {
         this.modelOfCar = modelOfCar;
-        this.number = keyNumber;
-    };
-    public Car(int keyNumber,String modelOfCar,String ownerOfCar)
-    {
-        this.modelOfCar = modelOfCar;
-        this.ownerOfCar = ownerOfCar;
-        this.number = keyNumber;
+        this.number = number;
     }
 
     public void setModelOfCar(String modelOfCar) {
         this.modelOfCar = modelOfCar;
     }
-    public void setOwnerOfCar(String ownerOfCar) {
-        this.ownerOfCar = ownerOfCar;
-    }
-    public void setKeyNumber(int keyNumber) {
-        this.number = keyNumber;
+    public void setKeyNumber(int number) {
+        this.number = number;
     }
 
     public String getModelOfCar() {
         return modelOfCar;
     }
-    public String getOwnerOfCar() {
-        return ownerOfCar;
-    }
-    public int getKeyNumber() {
+    public int getNumber() {
         return number;
     }
 
-
     @Override
     public String toString() {
-        return "Car " +
-                "ModelOfCar='" + modelOfCar + '\'' +
-                ", OwnerOfCar='" + ownerOfCar + '\'' +
-                "\n";
+        return "Car number" +this.number+ "\tModelOfCar:" + this.modelOfCar + ' ';
     }
 }
 
@@ -53,20 +35,24 @@ class PrivateAuto extends Car
 {
 
     int parkingDays;
+    String owner;
 
     public int getParkingDays() {
         return parkingDays;
     }
+    public String getOwner() {
+        return owner;
+    }
 
-    public PrivateAuto(int keyNumber,String modelOfCar, String ownerOfCar, int parkingDays) {
-        super(keyNumber,modelOfCar, ownerOfCar);
+    public PrivateAuto(int number, String modelOfCar, String owner, int parkingDays) {
+        super(number,modelOfCar);
+        this.owner = owner;
         this.parkingDays = parkingDays;
     }
 
-    public PrivateAuto(int keyNumber,String modelOfCar, int parkingDays)
-    {
-        super(keyNumber,modelOfCar);
-        this.parkingDays = parkingDays;
+    @Override
+    public String toString() {
+        return super.toString()+ "\towner: " + owner + "\tparkingDays: " + parkingDays ;
     }
 
 

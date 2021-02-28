@@ -3,7 +3,7 @@ package Lab_3_Pack;
 public class Parking implements TimeOnTheParking{
 
     int quantityOfEE;
-    Record journal;
+    Record record ;
 
 
     public void setQuantityOfEE(int quantityOfEE) {
@@ -15,9 +15,14 @@ public class Parking implements TimeOnTheParking{
 
 
     @Override
-    public String inOutCar(int days)
+    public String inOutCar(Record record)
     {
-        return journal.toString()+"For " +days+" day(s) the car was leaving the parking lot "+ this.quantityOfEE+" times";
+        return "For " +record.getParkingDays()+" day(s) the car was leaving the parking lot "+ this.quantityOfEE+" times\n";
+    }
+
+    public String quantityOfEE(Record record){
+
+        return record.toString() + inOutCar(record);
     }
 
     public int paymentForParking(int dataCount)

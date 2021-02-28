@@ -8,19 +8,28 @@ public class Menu {
     public static void menuParking()
     {
         Scanner in = new Scanner(System.in);
-        int numOfTask;
+        int numOfTask=0;
         int carIDl;
+        String nameFind;
+        Journal journal = new Journal();
 
-        Vector<Record> journalVector = new Vector<>(10);
-        Vector<PrivateAuto> autoVector = new Vector<>(10);
-        Vector<AutoOwner> ownerVector = new Vector<>(10);
+        PrivateAuto auto0 = new PrivateAuto(1910120,"Audi","Sergey",10);
+        PrivateAuto auto1 = new PrivateAuto(9947700,"Tesla","Vasiliy",15);
+        PrivateAuto auto2 = new PrivateAuto(7481014,"BMW","Vasiliy",7);
+
+        Vector<Record> recordVector =new Vector<Record>(10);
+        recordVector.add( new Record(auto0));
+        recordVector.add( new Record(auto1));
+        recordVector.add( new Record(auto2));
 
 
+
+        while (numOfTask!=6){
         System.out.println( "1 - Подсчет и выдача счета владельцу\t\t 3 - Создание отчета (сортировка по машине или по владельцу)\n"  +
                 "2 - Получение списка всех машин на стоянке\t 4 - Отчет по конкретной машине или владельцу\n" +
                 "5 - Журнал вьездов-выездов за период времени 6 - Выход из программы\n");
 
-        System.out.println("Quantity of cars: " + journalVector.size());
+        System.out.println("Quantity of cars: " + recordVector.size());
 
         System.out.println("\nEnter the number of the function");
         numOfTask=in.nextInt();
@@ -30,63 +39,66 @@ public class Menu {
         switch (numOfTask)
         {
             case 1: {
-                System.out.println("Enter ID");
-                carIDl=in.nextInt()-1;
+                System.out.println("Enter number");
+                carIDl=in.nextInt();
 
-                try {
-                    if(journalVector.elementAt(carIDl).personName==journalVector.elementAt(carIDl+1).personName)
-                        System.out.println(journalVector.elementAt(carIDl).reportForOwner(journalVector.elementAt(carIDl),journalVector.elementAt(carIDl+1)));
-                    else
-                        System.out.println(journalVector.elementAt(carIDl).reportForOwner(journalVector.elementAt(carIDl),journalVector.elementAt(carIDl-1)));
-                }
-                catch (Exception e)
+                for(var i: recordVector)
                 {
-                    System.out.println(journalVector.elementAt(carIDl).reportForOwner(journalVector.elementAt(carIDl)));
+                    if(i.number==carIDl)
+                        System.out.println(journal.reportForOwner(i));
                 }
+
                 break;
             }
             case 2: {
-                Record.carList(journalVector);
+                journal.carList(recordVector);
                 break;
             }
             case 3: {
                 System.out.println("Sort by cars or owners?\n 1 - Cars \t 2 - Owners");
                 numOfTask=in.nextInt();
-                journalVector.elementAt(0).sortByAutoOrOwner(numOfTask,journalVector);
-
+                journal.sortByAutoOrOwner(numOfTask,recordVector);
+                break;
             }
             case 4 :{
                 System.out.println("Report by cars or owners?\n 1 - Cars \t 2 - Owners");
                 numOfTask=in.nextInt();
 
-                System.out.println("Enter ID");
-                carIDl=in.nextInt()-1;
-                if(numOfTask !=1){
 
-                    try {
-                        if (journalVector.elementAt(carIDl).personName == journalVector.elementAt(carIDl + 1).personName)
-                            journalVector.firstElement().reportByOwner( journalVector.elementAt(carIDl), journalVector.elementAt(carIDl + 1));
-                        else
-                            journalVector.firstElement().reportByOwner( journalVector.elementAt(carIDl), journalVector.elementAt(carIDl - 1));
-                    }
-                    catch(Exception e)
+                if(numOfTask ==1)
+                {
+                    System.out.println("Enter number");
+                    carIDl=in.nextInt();
+                    for(var i: recordVector)
                     {
-                        journalVector.firstElement().reportByOwner(journalVector.elementAt(carIDl));
+                        if(i.number==carIDl)
+                            journal.repByAuto(i);
                     }
+
                 }
                 else{
-                    journalVector.firstElement().repByAuto(journalVector.elementAt(carIDl));
-                }
 
+                    nameFind = in.nextLine();
+
+                    for(Record i: recordVector)
+                    {
+                        if(i.personName==nameFind)
+                            System.out.println(journal.reportByOwner(i));
+                    }}
+            break;
             }
             case 5: {
                 Parking parking = new Parking();
-                System.out.println("Enter ID of the car");
-                carIDl=in.nextInt()-1;
+                System.out.println("Enter number of the car");
+                carIDl=in.nextInt();
                 parking.setQuantityOfEE(5);
-                System.out.println(journalVector.firstElement().quantityOfEE(journalVector.elementAt(carIDl),parking.getQuantityOfEE()));
-            }
+                for(var i: recordVector)
+                {
+                    if(i.number==carIDl)
+                        System.out.println(parking.quantityOfEE(i));
+                }
 
-        }
+            }
+        }}
     }
 }

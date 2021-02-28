@@ -4,7 +4,7 @@ public interface TimeOnTheParking {
 
     int payForDay = 30;
 
-    String inOutCar(int days);
+    String inOutCar(Record record);
 
 
 

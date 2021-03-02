@@ -11,13 +11,6 @@ public abstract class Car {
         this.number = number;
     }
 
-    public void setModelOfCar(String modelOfCar) {
-        this.modelOfCar = modelOfCar;
-    }
-    public void setKeyNumber(int number) {
-        this.number = number;
-    }
-
     public String getModelOfCar() {
         return modelOfCar;
     }

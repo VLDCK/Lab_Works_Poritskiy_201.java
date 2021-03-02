@@ -16,7 +16,11 @@ public class Journal {
 
 
     public int countingForTwoMoreCars(Record journal1, Record journal2) {
-        return parking.paymentForParking(record.sumParcDays(journal1,journal2));
+        return parking.paymentForParking(sumParcDays(journal1,journal2));
+    }
+
+    public int sumParcDays(Record record1, Record record2){
+        return record1.parkingDays + record2.parkingDays;
     }
 
     public String reportForOwner(Record record){
@@ -25,14 +29,12 @@ public class Journal {
                 " is equal "+ parking.paymentForParking(record.getParkingDays());
     }
 
-
     public void carList(Vector<Record> records){
         for(Record o : records)
         {
             System.out.println(o.toString()+'\n');
         }
     }
-
 
     private void reportList(Vector<Record> vecJ){
 
@@ -52,7 +54,6 @@ public class Journal {
 
     }
 
-
     public String reportByOwner(Record journal1)
     {
         return "Name : "+ journal1.personName+" owns "+
@@ -68,6 +69,7 @@ public class Journal {
 
 
     }
+
     public void repByAuto(Record record){
 
         System.out.println("Name of car model: " + record.getModalName() + "  --  Owner is "+ record.getPersonName() +

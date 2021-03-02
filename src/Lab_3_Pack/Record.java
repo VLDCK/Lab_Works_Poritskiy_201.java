@@ -45,9 +45,6 @@ public class Record implements Comparable<Record>{
     }
 
 
-    public int sumParcDays(Record record1, Record record2){
-        return record1.parkingDays + record2.parkingDays;
-    }
 
     @Override
     public int compareTo(Record o1)

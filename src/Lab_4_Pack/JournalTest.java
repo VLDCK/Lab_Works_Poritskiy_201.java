@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class JournalTest {
 
     Journal j = new Journal();
+    Parking parking = new Parking();
+    
     PrivateAuto auto0 = new PrivateAuto(1910120,"Audi","Sergey",10);
     PrivateAuto auto1 = new PrivateAuto(9947700,"Susuki","Vitaliy",15);
     PrivateAuto auto2 = new PrivateAuto(7481014,"BMW","Vasiliy",7);
@@ -18,13 +20,9 @@ class JournalTest {
     Record record1 = new Record(auto0);
     Record record2 = new Record(auto1);
     Record record3 = new Record(auto2);
-
-    Parking parking = new Parking();
-
-
+ 
     @Test
     void countingForTwoMoreCars() {
-
         int expected = 30*(10+15);
         int actual = j.countingForTwoMoreCars(record1,record2);
         assertEquals(expected,actual);
@@ -32,10 +30,7 @@ class JournalTest {
 
     @Test
     void sumParcDays() {
-
-
         int actual = j.sumParcDays(record1,record2);
-
         int expected = record1.getParkingDays()+record2.getParkingDays();
         assertEquals(expected,actual);
 
@@ -55,7 +50,6 @@ class JournalTest {
     void sortByAuto() {
 
         ArrayList<Record> expected = new ArrayList<Record>(3);
-
         expected.add(record1);
         expected.add(record3);
         expected.add(record2);
@@ -66,7 +60,6 @@ class JournalTest {
         actual.add(record3);
 
         j.sortByAuto(actual);
-
         assertEquals(expected,actual);
     }
 
@@ -74,7 +67,6 @@ class JournalTest {
     void sortByOwner() {
 
         ArrayList<Record> expected = new ArrayList<Record>(3);
-
         expected.add(record1);
         expected.add(record3);
         expected.add(record2);
@@ -89,7 +81,6 @@ class JournalTest {
     }
     @Test
     void reportByOwner() {
-
         String actual = j.reportByOwner(record1);
         String expected = "Name : Sergey owns Audi --  Parking fee is: "
                 + parking.paymentForParking(record1.getParkingDays());

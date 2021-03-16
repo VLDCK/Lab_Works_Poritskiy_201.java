@@ -1,7 +1,7 @@
 package Lab_3_Pack;
 
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.ArrayList;
+
 
 //Класс журнал имеет следующие фнкции:
 // 1 - Подсчет и выдача счета владельцу;
@@ -11,16 +11,16 @@ import java.util.Vector;
 // 5 - Журнал вьездов-выездов за период времени;
 public class Journal {
 
-    Record record ;
-    Parking parking = new Parking();
+
+    public Parking parking = new Parking();
 
 
-    public int countingForTwoMoreCars(Record journal1, Record journal2) {
-        return parking.paymentForParking(sumParcDays(journal1,journal2));
+    public int countingForTwoMoreCars(Record record1, Record record2) {
+        return parking.paymentForParking(sumParcDays(record1,record2));
     }
 
     public int sumParcDays(Record record1, Record record2){
-        return record1.parkingDays + record2.parkingDays;
+        return record1.getParkingDays() + record2.getParkingDays();
     }
 
     public String reportForOwner(Record record){
@@ -29,51 +29,43 @@ public class Journal {
                 " is equal "+ parking.paymentForParking(record.getParkingDays());
     }
 
-    public void carList(Vector<Record> records){
+    public void carList(ArrayList<Record> records){
         for(Record o : records)
         {
             System.out.println(o.toString()+'\n');
         }
     }
 
-    private void reportList(Vector<Record> vecJ){
+    public ArrayList<Record> sortByAuto(ArrayList<Record> records)
+    {
+        records.sort(Record::compareTo);
+        return records;
+    }
+
+    public ArrayList<Record> sortByOwner(ArrayList<Record> records)
+    {
+       records.sort(Record::compareToSecond);
+       return records;
+    }
+
+    private void reportPayList(ArrayList<Record> vecJ){
 
         for(Record o : vecJ)
         {
             System.out.println(o.toString() +".  --  Parking fee is "+ parking.paymentForParking(o.parkingDays));
         }
     }
-    public void sortByAutoOrOwner(int numOfSort,Vector<Record> records)
+
+    public String reportByOwner(Record record1)
     {
-        if(numOfSort ==1)
-            records.sort(Record::compareToSecond);
-
-        else records.sort(Record::compareTo);
-
-        reportList(records);
-
+        return "Name : "+ record1.getPersonName()+" owns "+
+                record1.getModalName()+" --  Parking fee is: "  + parking.paymentForParking(record1.getParkingDays());
     }
 
-    public String reportByOwner(Record journal1)
-    {
-        return "Name : "+ journal1.personName+" owns "+
-                journal1.modalName+"  --  Parking fee is: "  +parking.paymentForParking(journal1.getParkingDays());
-    }
-    public String reportByOwner(Record journal1, Record journal2)
-    {
+    public String repByAuto(Record record){
 
-        return journal1.carQuantity>1?
-                "Name : "+ journal1.personName+" owns "+journal1.carQuantity+
-                " cars--  Parking fee is: "  +countingForTwoMoreCars(journal1,journal2):
-                reportByOwner(journal1);
-
-
-    }
-
-    public void repByAuto(Record record){
-
-        System.out.println("Name of car model: " + record.getModalName() + "  --  Owner is "+ record.getPersonName() +
-                "  --  Parking fee is: " + parking.paymentForParking(record.getParkingDays()));
+       return "Name of car model: " + record.getModalName() + "  --  Owner is "+ record.getPersonName() +
+                "  --  Parking fee is: " + parking.paymentForParking(record.getParkingDays());
     }
 
 

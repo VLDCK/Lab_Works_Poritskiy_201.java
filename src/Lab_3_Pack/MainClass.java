@@ -16,7 +16,7 @@ public class MainClass {
     *Звіт можливо сортувати або по авто, або по власникам.
     */
     public static void main(String[] args) {
-        Menu.menuParking();
+
     }
 
     

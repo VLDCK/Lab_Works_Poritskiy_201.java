@@ -2,19 +2,18 @@ package Lab_3_Pack;
 
 
 
+import java.util.Comparator;
 import java.util.Vector;
 
-public class Record implements Comparable<Record>{
+public class Record implements Comparable<Record>, Comparator{
 
     int number;
     String modalName;
     String personName;
     int carQuantity;
     int parkingDays;
-    Parking parking=new Parking();
-    Journal journal;
 
-    Record(PrivateAuto privateAuto)
+    public Record(PrivateAuto privateAuto)
     {
         this.number = privateAuto.getNumber();
         this.modalName = privateAuto.getModelOfCar();
@@ -41,7 +40,7 @@ public class Record implements Comparable<Record>{
 
     @Override
     public String toString() {
-        return  "Number: " +this.number +  "  --  | Model Of The Car: " + this.modalName + "   --   | Owner: " + this.personName+" " ;
+        return  "Number: " + this.number +  "  --  | Model Of The Car: " + this.modalName + "   --   | Owner: " + this.personName+" " ;
     }
 
 
@@ -49,18 +48,17 @@ public class Record implements Comparable<Record>{
     @Override
     public int compareTo(Record o1)
     {
-        return o1.personName.compareTo(this.personName);
+        return this.getModalName().compareTo(o1.getModalName());
     }
 
     public int compareToSecond(Record o1)
     {
-        return this.modalName.compareTo(o1.modalName);
+
+        return this.getPersonName().compareTo(o1.getPersonName());
     }
 
-
-
-
-
-
-
+    @Override
+    public int compare(Object o1, Object o2) {
+        return 0;
+    }
 }

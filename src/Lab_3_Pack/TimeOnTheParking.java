@@ -6,6 +6,8 @@ public interface TimeOnTheParking {
 
     String inOutCar(Record record);
 
+    int paymentForParking(int days);
+
 
 
 

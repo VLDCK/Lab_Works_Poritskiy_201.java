@@ -22,8 +22,6 @@ class ParkingTest {
     Record record2 = new Record(auto1);
     Record record3 = new Record(auto2);
 
-
-
     @Test
     void sumParkingDays() {
 

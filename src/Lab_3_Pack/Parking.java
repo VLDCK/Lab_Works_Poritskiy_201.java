@@ -1,25 +1,24 @@
 package Lab_3_Pack;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 public class Parking implements TimeOnTheParking{
 
-    int quantityOfEE ;
-
-    public void setQuantityOfEE(int quantityOfEE) {
-        this.quantityOfEE = quantityOfEE;
+    public int sumOfExitEnter(Record record)
+    {
+        return record.getQuantityOfExit()+record.getQuantityOfEnter();
     }
 
-    public int getQuantityOfEE() {
-        return quantityOfEE;
-    }
-
-    public String quantityOfEE(Record record){
-        return record.toString() + inOutCar(record);
+    public int sumParkingDays(Record record1, Record record2){
+        return record1.privateAuto.getParkingDays() + record2.privateAuto.getParkingDays();
     }
 
     @Override
     public String inOutCar(Record record)
     {
-        return "For " +record.getParkingDays()+" day(s) the car was leaving the parking lot "+ this.quantityOfEE+" times\n";
+        return "For " +record.privateAuto.getParkingDays()+" day(s) the car was leaving the parking lot "
+                + this.sumOfExitEnter(record)+" times\n";
     }
     @Override
     public int paymentForParking(int dataCount)

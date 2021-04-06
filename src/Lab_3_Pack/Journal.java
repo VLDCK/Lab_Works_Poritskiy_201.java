@@ -2,7 +2,6 @@ package Lab_3_Pack;
 
 import java.util.ArrayList;
 
-
 //Класс журнал имеет следующие фнкции:
 // 1 - Подсчет и выдача счета владельцу;
 // 2 - Получение списка всех машин на стоянке;
@@ -11,22 +10,23 @@ import java.util.ArrayList;
 // 5 - Журнал вьездов-выездов за период времени;
 public class Journal {
 
-
     public Parking parking = new Parking();
+    ArrayList<Record> records;
 
+    public void addRecord(Record record)
+    {
+        this.records.add(record);
+    }
 
     public int countingForTwoMoreCars(Record record1, Record record2) {
-        return parking.paymentForParking(sumParcDays(record1,record2));
+        return parking.paymentForParking(parking.sumParkingDays(record1,record2));
     }
 
-    public int sumParcDays(Record record1, Record record2){
-        return record1.getParkingDays() + record2.getParkingDays();
-    }
 
     public String reportForOwner(Record record){
 
-        return "Owner "+ record.personName+ ". Payment for "+record.modalName+
-                " is equal "+ parking.paymentForParking(record.getParkingDays());
+        return "Owner "+ record.privateAuto.getOwner()+ ". Payment for "+record.privateAuto.getParkingDays()+
+                " day/s is equal "+ parking.paymentForParking(record.privateAuto.getParkingDays());
     }
 
     public void carList(ArrayList<Record> records){
@@ -52,21 +52,45 @@ public class Journal {
 
         for(Record o : vecJ)
         {
-            System.out.println(o.toString() +".  --  Parking fee is "+ parking.paymentForParking(o.parkingDays));
+            System.out.println(o.toString() +".  --  Parking fee is "
+                                            + parking.paymentForParking(o.privateAuto.getParkingDays()));
         }
     }
 
     public String reportByOwner(Record record1)
     {
-        return "Name : "+ record1.getPersonName()+" owns "+
-                record1.getModalName()+" --  Parking fee is: "  + parking.paymentForParking(record1.getParkingDays());
+        return "Name : "+ record1.privateAuto.getOwner()+" owns "+
+                record1.privateAuto.getModelOfCar()+" --  Parking fee is: "
+                + parking.paymentForParking(record1.privateAuto.getParkingDays());
+    }
+    public String reportByAuto(Record record){
+
+       return "Name of car model: " + record.privateAuto.getModelOfCar() +
+              "  --  Owner is "+ record.privateAuto.getOwner() +
+              "  --  Parking fee is: " + parking.paymentForParking(record.privateAuto.getParkingDays());
     }
 
-    public String repByAuto(Record record){
-
-       return "Name of car model: " + record.getModalName() + "  --  Owner is "+ record.getPersonName() +
-                "  --  Parking fee is: " + parking.paymentForParking(record.getParkingDays());
+    public void carEnter(Record record)
+    {
+        record.setDateOfEnter();
+        record.setQuantityOfEnter();
     }
+
+    public void carExit(Record record)
+    {
+        record.getDateOfEnter();
+        record.setQuantityOfExit();
+    }
+
+    public String getInfoQuantityOfEnterExit(Record record)
+    {
+        return record.toString()+ "Enter the parking at " + record.getDateOfEnter()+
+               "\nLeft the parking in "+ record.getQuantityOfExit() + " times"+
+               "\nEntered the parking lot " +record.getQuantityOfEnter() +" times";
+
+    }
+
+
 
 
 

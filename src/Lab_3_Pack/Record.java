@@ -1,64 +1,61 @@
 package Lab_3_Pack;
 
+import java.time.LocalDate;
+import java.util.*;
 
+public class Record implements Comparable<Record>{
 
-import java.util.Comparator;
-import java.util.Vector;
+    int quantityOfExit = 0;
+    int quantityOfEnter = 0;
+    Parking parking = new Parking();
+    public PrivateAuto privateAuto;
+    LocalDate dateOfEnter;
 
-public class Record implements Comparable<Record>, Comparator{
+    public Record(PrivateAuto privateAuto) {
+        this.privateAuto = privateAuto;
+        this.setQuantityOfEnter();
+    }
 
-    int number;
-    String modalName;
-    String personName;
-    int carQuantity;
-    int parkingDays;
+    public void setQuantityOfEnter() {
+        quantityOfEnter =+ 1;
+    }
 
-    public Record(PrivateAuto privateAuto)
+    public int getQuantityOfEnter() {
+        return quantityOfEnter;
+    }
+
+    public void setQuantityOfExit() {
+        quantityOfExit =+ 1;
+    }
+
+    public int getQuantityOfExit() {
+        return quantityOfExit;
+    }
+
+    public void setDateOfEnter(){
+        dateOfEnter = LocalDate.now();
+    }
+
+    public String getDateOfEnter()
     {
-        this.number = privateAuto.getNumber();
-        this.modalName = privateAuto.getModelOfCar();
-        this.personName = privateAuto.getOwner();
-        this.parkingDays = privateAuto.getParkingDays();
+        return dateOfEnter.toString();
     }
-
-    public void setCarQuantity(int carQuantity) {
-        this.carQuantity = carQuantity;
-    }
-    public int getParkingDays() {
-        return parkingDays;
-    }
-    public String getModalName() {
-        return modalName;
-    }
-    public int getNumber() {
-        return number;
-    }
-    public String getPersonName() {
-        return personName;
-    }
-
 
     @Override
     public String toString() {
-        return  "Number: " + this.number +  "  --  | Model Of The Car: " + this.modalName + "   --   | Owner: " + this.personName+" " ;
+        return  "Number: " + privateAuto.getNumber() +  "  --  | Model Of The Car: " + privateAuto.getModelOfCar()
+                + "   --   | Owner: " + privateAuto.getOwner()+" " ;
     }
-
-
 
     @Override
     public int compareTo(Record o1)
     {
-        return this.getModalName().compareTo(o1.getModalName());
+        return privateAuto.getModelOfCar().compareTo(o1.privateAuto.getModelOfCar());
     }
 
     public int compareToSecond(Record o1)
     {
-
-        return this.getPersonName().compareTo(o1.getPersonName());
+        return privateAuto.getOwner().compareTo(o1.privateAuto.getOwner());
     }
 
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
     }
-}

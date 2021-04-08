@@ -1,6 +1,8 @@
 package Lab_3_Pack;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 //Класс журнал имеет следующие фнкции:
 // 1 - Подсчет и выдача счета владельцу;
@@ -44,7 +46,7 @@ public class Journal {
 
     public ArrayList<Record> sortByOwner(ArrayList<Record> records)
     {
-       records.sort(Record::compareToSecond);
+        records.sort(Record::compareToSecond);
        return records;
     }
 
@@ -89,11 +91,6 @@ public class Journal {
                "\nEntered the parking lot " +record.getQuantityOfEnter() +" times";
 
     }
-
-
-
-
-
 
 }
 

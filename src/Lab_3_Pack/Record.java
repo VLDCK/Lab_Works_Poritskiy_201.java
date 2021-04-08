@@ -44,7 +44,7 @@ public class Record implements Comparable<Record>{
     @Override
     public String toString() {
         return  "Number: " + privateAuto.getNumber() +  "  --  | Model Of The Car: " + privateAuto.getModelOfCar()
-                + "   --   | Owner: " + privateAuto.getOwner()+" " ;
+                + "   --   | Owner: " + privateAuto.getOwner() ;
     }
 
     @Override
@@ -58,4 +58,8 @@ public class Record implements Comparable<Record>{
         return privateAuto.getOwner().compareTo(o1.privateAuto.getOwner());
     }
 
+    public int SecondCompare(Record o1, Record o2) {
+        return o1.privateAuto.getOwner().compareTo(o2.privateAuto.getOwner());
+
     }
+}

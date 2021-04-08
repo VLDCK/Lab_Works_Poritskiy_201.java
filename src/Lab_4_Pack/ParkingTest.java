@@ -5,7 +5,14 @@ import Lab_3_Pack.Parking;
 import Lab_3_Pack.PrivateAuto;
 import Lab_3_Pack.Record;
 import java.util.Date;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.runners.Parameterized;
 
 import static Lab_3_Pack.TimeOnTheParking.payForDay;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,34 +29,58 @@ class ParkingTest {
     Record record2 = new Record(auto1);
     Record record3 = new Record(auto2);
 
-    @Test
-    void sumParkingDays() {
+    @Parameterized.Parameters
+    public static Stream<Record> recordsParameters()
+    {
+        return Stream.of(
+                new Record(new PrivateAuto(1910120,"Audi","Sergey",10)),
+                new Record(new PrivateAuto(9947700,"Suzuki","Vitaliy",15)),
+                new Record(new PrivateAuto(7481014,"BMW","Vasiliy",7)));
+    }
+    @Parameterized.Parameters
+    private static Stream<Arguments> arguments() {
+        return Stream.of(
+                Arguments.of(
+                        new Record(new PrivateAuto(1910120, "Audi", "Sergey", 10)),
+                        new Record(new PrivateAuto(9947700, "Suzuki", "Vitaliy", 15)),
+                        new Record(new PrivateAuto(7481014, "BMW", "Vasiliy", 7))
+                ));
+    }
 
-        int expected = record1.privateAuto.getParkingDays()+
-                record2.privateAuto.getParkingDays();
+    @ParameterizedTest
+    @MethodSource("arguments")
+    void sumParkingDays(Record record_1, Record record_2) {
 
-        int actual = parking.sumParkingDays(record1,record2);
+        int expected = record_1.privateAuto.getParkingDays()+
+                record_2.privateAuto.getParkingDays();
+
+        int actual = parking.sumParkingDays(record_1,record_2);
         assertEquals(expected,actual);
 
     }
-    @Test
-    void sumOfExitEnter() {
-        int expected = record1.getQuantityOfEnter()+record1.getQuantityOfExit();
-        int actual = parking.sumOfExitEnter(record1);
+    @ParameterizedTest
+    @MethodSource("arguments")
+    void sumOfExitEnter(Record record) {
+        int expected = record.getQuantityOfEnter()+record.getQuantityOfExit();
+        int actual = parking.sumOfExitEnter(record);
         assertEquals(expected,actual);
     }
 
-    @Test
-    void inOutCar() {
+    @ParameterizedTest
+    @MethodSource("recordsParameters")
+    void inOutCar(Record record) {
 
-        String expected = "For 7 day(s) the car was leaving the parking lot "+ parking.sumOfExitEnter(record1)+ " times\n";
-        String actual = parking.inOutCar(record3);
+        String expected = "For " +record.privateAuto.getParkingDays()+" day(s) the car was leaving the parking lot "
+                + parking.sumOfExitEnter(record)+" times\n";
+        String actual = parking.inOutCar(record);
+        assertEquals(expected,actual);
     }
 
-    @Test
-    void paymentForParking() {
-        int expected =  payForDay * record1.privateAuto.getParkingDays();
-        int actual = parking.paymentForParking(record1.privateAuto.getParkingDays());
+    @ParameterizedTest
+    @MethodSource("recordsParameters")
+    void paymentForParking(Record record) {
+        int expected =  payForDay * record.privateAuto.getParkingDays();
+        int actual = parking.paymentForParking(record.privateAuto.getParkingDays());
         assertEquals(expected,actual);
     }
 }

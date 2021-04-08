@@ -7,7 +7,12 @@ import Lab_3_Pack.Record;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.runners.Parameterized;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,52 +20,58 @@ class RecordTest {
 
     Journal j = new Journal();
     Parking parking = new Parking();
-    PrivateAuto auto0 = new PrivateAuto(1910120,"Audi","Sergey",10);
-    PrivateAuto auto1 = new PrivateAuto(9947700,"Suzuki","Vitaliy",15);
-    PrivateAuto auto2 = new PrivateAuto(7481014,"BMW","Vasiliy",7);
 
-    Record record1 = new Record(auto0);
-    Record record2 = new Record(auto1);
-    Record record3 = new Record(auto2);
+    @Parameterized.Parameters
+    public static Stream<Record> recordsParameters()
+    {
+        return Stream.of(
+                new Record(new PrivateAuto(1910120,"Audi","Sergey",10)),
+                new Record(new PrivateAuto(9947700,"Suzuki","Vitaliy",15)),
+                new Record(new PrivateAuto(7481014,"BMW","Vasiliy",7)));
+    }
 
-
-    @Test
-    void getQuantityOfEnter() {
-
-    record2.setQuantityOfEnter();
+    @ParameterizedTest
+    @MethodSource("recordsParameters")
+    void getQuantityOfEnter(Record record) {
+    record.setQuantityOfEnter();
     int expected = 1;
-    int actual = record2.getQuantityOfEnter();
+
+    int actual = record.getQuantityOfEnter();
     assertEquals(expected,actual);
     }
 
 
-    @Test
-    void getQuantityOfExit() {
-        record2.setQuantityOfExit();
+    @ParameterizedTest
+    @MethodSource("recordsParameters")
+    void getQuantityOfExit(Record record) {
+        record.setQuantityOfExit();
         int expected = 1;
-        int actual = record2.getQuantityOfExit();
+        int actual = record.getQuantityOfExit();
         assertEquals(expected,actual);
 
     }
 
-    @Test
-    void getDateOfEnter()
+    @ParameterizedTest
+    @MethodSource("recordsParameters")
+    void getDateOfEnter(Record record)
     {
-        j.carEnter(record2);
+        j.carEnter(record);
 
-        String expected ="2021-04-06";
-        String actual = record2.getDateOfEnter();
+        String expected = LocalDate.now().toString();
+        String actual = record.getDateOfEnter();
         assertEquals(expected,actual);
     }
-    @Test
-    void testToString() {
+
+    @ParameterizedTest
+    @MethodSource("recordsParameters")
+    void testToString(Record record) {
+        String expected = "Number: " + record.privateAuto.getNumber() +
+                "  --  | Model Of The Car: " +record.privateAuto.getModelOfCar() +
+                "   --   | Owner: " + record.privateAuto.getOwner();
+        String actual = record.toString();
+
+        assertEquals(expected,actual);
     }
 
-    @Test
-    void compareTo() {
-    }
 
-    @Test
-    void compareToSecond() {
-    }
 }

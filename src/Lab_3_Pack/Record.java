@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Record implements Comparable<Record>{
 
+
     int quantityOfExit = 0;
     int quantityOfEnter = 0;
     Parking parking = new Parking();

@@ -13,6 +13,7 @@ public class PrivateAuto extends Car {
         return owner;
     }
 
+
     public PrivateAuto(int number, String modelOfCar, String owner, int parkingDays) {
         super(number, modelOfCar);
         this.owner = owner;
@@ -21,7 +22,7 @@ public class PrivateAuto extends Car {
 
     @Override
     public String toString() {
-        return super.toString() + "\towner: " + owner + "\tparkingDays: " + parkingDays;
+        return super.toString() + "\tOwner: " + owner + "\tParking Days: " + parkingDays;
     }
 
 

@@ -10,9 +10,9 @@ public interface DAO <T>{
 
     List<T> getAll();
 
-    Optional <T> find(T entity);
+    String find(int number);
 
-    T createRecord(T entity) throws SQLException;
+    T create(T entity) throws SQLException;
 
     boolean update(T entity) throws SQLException;
 

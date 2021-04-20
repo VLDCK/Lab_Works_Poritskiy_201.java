@@ -20,7 +20,7 @@ public abstract class Car {
 
     @Override
     public String toString() {
-        return "Car number" +this.number+ "\tModelOfCar:" + this.modelOfCar + ' ';
+        return "Car number: " +this.number+ "\tModelOfCar: " + this.modelOfCar ;
     }
 }
 

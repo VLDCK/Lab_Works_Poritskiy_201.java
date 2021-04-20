@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 public class Parking implements TimeOnTheParking{
 
+
+
     public int sumOfExitEnter(Record record)
     {
         return record.getQuantityOfExit()+record.getQuantityOfEnter();

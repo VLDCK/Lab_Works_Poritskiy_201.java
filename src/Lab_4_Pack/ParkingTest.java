@@ -21,13 +21,6 @@ class ParkingTest {
     Journal j = new Journal();
     Parking parking =new Parking();
 
-    PrivateAuto auto0 = new PrivateAuto(1910120,"Audi","Sergey",10);
-    PrivateAuto auto1 = new PrivateAuto(9947700,"Suzuki","Vitaliy",15);
-    PrivateAuto auto2 = new PrivateAuto(7481014,"BMW","Vasiliy",7);
-
-    Record record1 = new Record(auto0);
-    Record record2 = new Record(auto1);
-    Record record3 = new Record(auto2);
 
     @Parameterized.Parameters
     public static Stream<Record> recordsParameters()

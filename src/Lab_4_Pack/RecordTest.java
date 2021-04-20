@@ -58,7 +58,7 @@ class RecordTest {
         j.carEnter(record);
 
         String expected = LocalDate.now().toString();
-        String actual = record.getDateOfEnter();
+        String actual = record.getDateOfEnter().toString();
         assertEquals(expected,actual);
     }
 

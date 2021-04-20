@@ -1,7 +1,7 @@
 package Lab_3_Pack;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Date;
 
 public class Record implements Comparable<Record>{
 
@@ -10,7 +10,8 @@ public class Record implements Comparable<Record>{
     int quantityOfEnter = 0;
     Parking parking = new Parking();
     public PrivateAuto privateAuto;
-    LocalDate dateOfEnter;
+    String dateOfEnter;
+
 
     public Record(PrivateAuto privateAuto) {
         this.privateAuto = privateAuto;
@@ -34,12 +35,12 @@ public class Record implements Comparable<Record>{
     }
 
     public void setDateOfEnter(){
-        dateOfEnter = LocalDate.now();
+        dateOfEnter = LocalDate.now().toString();
     }
 
     public String getDateOfEnter()
     {
-        return dateOfEnter.toString();
+        return dateOfEnter;
     }
 
     @Override

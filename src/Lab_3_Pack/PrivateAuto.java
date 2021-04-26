@@ -1,6 +1,9 @@
 package Lab_3_Pack;
 
+import Lab_5_Pack.AutoDAO;
+
 public class PrivateAuto extends Car {
+
 
     int parkingDays;
     String owner;
@@ -22,7 +25,7 @@ public class PrivateAuto extends Car {
 
     @Override
     public String toString() {
-        return super.toString() + "\tOwner: " + owner + "\tParking Days: " + parkingDays;
+        return super.toString() + "\tOwner: " + owner ;
     }
 
 

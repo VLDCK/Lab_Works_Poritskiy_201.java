@@ -19,27 +19,39 @@ public class Main {
         Record record1 = new Record(new PrivateAuto(5210241, "Tesla", "Ivan", 7));
         Record record2 = new Record(new PrivateAuto(9812333, "BMW", "Tom", 15));
 
-        PrivateAuto privateAuto = new PrivateAuto(9947700, "Suzuki", "Don", 11);
-        record.setDateOfEnter();
+        PrivateAuto privateAuto = new PrivateAuto (9947700, "Suzuki", "Don", 11);
+
+       /* record.setDateOfEnter();
         record1.setDateOfEnter();
         record2.setDateOfEnter();
 
         List<Record> records = new ArrayList<>();
         List<PrivateAuto> autos = new ArrayList<>();
-        /*records.add(record);
+        records.add(record);
         records.add(record1);
-        records.add(record2);*/
+        records.add(record2);
         
         records = recordDAO.getAll();
         for (Record i : records) {
             System.out.println(i.toString());
         }
+
         System.out.println("\n------------------------------\n");
 
         autos = autoDAO.getAll();
         for (PrivateAuto i : autos) {
             System.out.println(i.toString());
         }
+
+        System.out.println("\n------------------------------\n");
+
+        System.out.println(recordDAO.find(5210241));
+        System.out.println(autoDAO.find(9947700));
+*/
+        Record record3 = new Record(new PrivateAuto( 1910120, "Audi", "Jone", 10));
+
+
+        recordDAO.update(record3);
         //records = recordDAO.getAll();
 
         //recordDAO.create(record);
@@ -50,10 +62,7 @@ public class Main {
         //System.out.println(recordDAO.find(1910120));
         //System.out.println(autoDAO.find(9947700));
 
-        
-
-
-       // recordDAO.delete(record);
+        //recordDAO.delete(record2.privateAuto.getNumber());
         //recordDAO.delete(record);
         //recordDAO.delete(record);
         //autoDAO.delete(privateAuto);

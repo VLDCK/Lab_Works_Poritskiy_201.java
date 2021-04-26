@@ -13,7 +13,6 @@ public class RecordDAO implements DAO<Record>{
 
     List<Record> records = new ArrayList<>();
     Connection connection;
-    Statement statement;
     ResultSet resultSet;
 
 
@@ -42,9 +41,8 @@ public class RecordDAO implements DAO<Record>{
                  int number = resultSet.getInt("number");
                  String model = resultSet.getString("model");
                  String ownerName = resultSet.getString("name");
-                 int parkingDays = resultSet.getInt("parking_days");
 
-                 Record record = new Record(new PrivateAuto(number,model,ownerName,parkingDays));
+                 Record record = new Record(new PrivateAuto(number,model,ownerName,0));
                  records.add(record);
             }
         } catch (SQLException e) {
@@ -66,10 +64,9 @@ public class RecordDAO implements DAO<Record>{
             String model = resultSet.getString("model");
             String ownerName = resultSet.getString("name");
             String enterDate = resultSet.getString("enter_day");
-            int parkingDays = resultSet.getInt("parking_days");
 
             result = "Number: "+number+" Model: "+model+" Name: "+ownerName+
-                     " Date of enter: "+enterDate+" Days on parking: "+ parkingDays;
+                     " Date of enter: "+enterDate;
         }
         catch (SQLException e) {
         e.getMessage();
@@ -104,6 +101,7 @@ public class RecordDAO implements DAO<Record>{
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
             statement.setString(1,entity.privateAuto.getModelOfCar());
             statement.setString(2,entity.privateAuto.getOwner());
+            statement.setInt(3,entity.privateAuto.getNumber());
             isUpdated = statement.execute();
         } catch (SQLException sqlException) {
             System.out.println(sqlException.getMessage());
@@ -113,13 +111,13 @@ public class RecordDAO implements DAO<Record>{
     }
 
     @Override
-    public boolean delete(Record entity) {
+    public boolean delete(Record record) {
         boolean isDeleted= false;
 
         String sqlQuery = "delete from records where number = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
-            statement.setInt(1,entity.privateAuto.getNumber());
+            statement.setInt(1,record.privateAuto.getNumber());
             isDeleted = statement.execute();
         } catch (SQLException sqlException) {
             System.out.println(sqlException.getMessage());

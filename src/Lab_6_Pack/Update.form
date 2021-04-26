@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Lab_6_Pack.Update">
+  <grid id="27dc6" binding="updatePanel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="858" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-14407116"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="f59d2" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Roboto Light" size="20" style="0"/>
+          <foreground color="-6841669"/>
+          <text value="Set New Model "/>
+        </properties>
+      </component>
+      <component id="8b164" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Roboto Light" size="20" style="0"/>
+          <foreground color="-6841669"/>
+          <text value="Set New Name "/>
+        </properties>
+      </component>
+      <component id="ed684" class="javax.swing.JButton" binding="updateRECORD">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-7357510"/>
+          <font name="Roboto Light" size="18" style="0"/>
+          <foreground color="-13223861"/>
+          <text value="UPDATE RECORD"/>
+        </properties>
+      </component>
+      <component id="e3a3b" class="javax.swing.JButton" binding="menu">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-7357510"/>
+          <font name="Roboto Light" size="18" style="0"/>
+          <foreground color="-13223861"/>
+          <text value="MENU"/>
+        </properties>
+      </component>
+      <component id="f9227" class="javax.swing.JList" binding="list1" default-binding="true">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-7357510"/>
+          <font name="Roboto Light" size="16" style="0"/>
+          <foreground color="-14407116"/>
+        </properties>
+      </component>
+      <component id="21abc" class="javax.swing.JTextField" binding="modelField">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-7357510"/>
+          <font name="Source Code Pro" size="16" style="1"/>
+          <foreground color="-14407116"/>
+        </properties>
+      </component>
+      <component id="536be" class="javax.swing.JTextField" binding="nameField">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-7357510"/>
+          <font name="Source Code Pro" size="16" style="1"/>
+          <foreground color="-14407116"/>
+        </properties>
+      </component>
+      <component id="de985" class="javax.swing.JLabel" binding="successText">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Roboto Light" size="19" style="0"/>
+          <foreground color="-6841669"/>
+          <text value="YOUR RECORD WAS UPGRADED"/>
+        </properties>
+      </component>
+      <component id="a4418" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Roboto Light" size="24" style="0"/>
+          <foreground color="-7357510"/>
+          <text value="UPDATE RECORD"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -1,10 +1,11 @@
 package Lab_3_Pack;
 
+import Lab_5_Pack.RecordDAO;
+
 import java.time.LocalDate;
 import java.util.Date;
 
 public class Record implements Comparable<Record>{
-
 
     int quantityOfExit = 0;
     int quantityOfEnter = 0;
@@ -16,8 +17,13 @@ public class Record implements Comparable<Record>{
     public Record(PrivateAuto privateAuto) {
         this.privateAuto = privateAuto;
         this.setQuantityOfEnter();
-    }
 
+    }
+    public Record(PrivateAuto privateAuto, String dateOfEnter) {
+        this.privateAuto = privateAuto;
+        this.setQuantityOfEnter();
+        this.dateOfEnter =dateOfEnter;
+    }
     public void setQuantityOfEnter() {
         quantityOfEnter =+ 1;
     }
@@ -45,8 +51,8 @@ public class Record implements Comparable<Record>{
 
     @Override
     public String toString() {
-        return  "Number: " + privateAuto.getNumber() +  "  --  | Model Of The Car: " + privateAuto.getModelOfCar()
-                + "   --   | Owner: " + privateAuto.getOwner() ;
+        return  "Number: " + privateAuto.getNumber() +  "  | Model: " + privateAuto.getModelOfCar()
+                + "  | Owner: " + privateAuto.getOwner() ;
     }
 
     @Override
